@@ -1,0 +1,33 @@
+1.首先打开mysql数据库 新建一个数据库test，然后生成对应的表结构
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL auto_increment,
+  `name` varchar(255) NOT NULL,
+  `pwd` varchar(255) NOT NULL,
+  `sex` varchar(255) NOT NULL,
+  `home` varchar(255) NOT NULL,
+  `info` varchar(255) NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+
+INSERT INTO `user` VALUES ('3', '123', '123', '123', '123', '123');
+INSERT INTO `user` VALUES ('4', '123123', '123123', '男', '北京', '123123');
+
+2.然后打开MyEclipse新建一个web项目
+3.在webroot下的WEB-INF下的lib中导入mysql的驱动jar包
+4.建立对应的包结构 
+	com.filter   //过滤器 解决中文字符集乱码
+	com.util     //数据库连接工具类
+	com.entity   //实体类
+	com.dao      //数据操作类
+	com.servlet   //servlet类
+5.在filter下新建一个EncodingFilter用来解决中文字符集乱码，它需要继承Filter接口
+6.到web.xml下进行对EncodingFilter相应的配置
+7.在util下新建一个DBconn类用来处理对数据库的连接操作
+8.在entity下新建一个User实体类
+9.在dao下新建一个UserDao接口  以及对应的方法实现类
+10.在servlet下创建DengluServlet用来实现对用户登录的操作
+11.在servlet下创建一个ZhuceServlet用来实现用户注册的操作
+12.在servlet下创建SearchallServlet用来返回数据库中所有用户信息
+13.在servlet下创建DeleteServlet用来删除用户操作
+14.在servlet下创建UpdateServlet操作用来更新用户信息
